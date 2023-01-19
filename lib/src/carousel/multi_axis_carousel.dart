@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class MultiAxisCarouselState extends StatelessWidget {
-  int currentPage;
+  int? currentPage;
   bool initial = true;
   final dynamic props;
 
@@ -11,7 +11,7 @@ class MultiAxisCarouselState extends StatelessWidget {
   }
 
   initiate(index) {
-    double value;
+    double? value;
     if (index == currentPage && initial) value = 0.0;
     initial = false;
     return value;
@@ -78,7 +78,7 @@ class MultiAxisCarouselState extends StatelessWidget {
                   ..rotateY(((value) * 3393) / 90)
                   ..rotateZ(0.0),
                 child: Opacity(
-                  opacity: math.pow(value, 4),
+                  opacity: double.parse('${math.pow(value, 4)}'),
                   child: Container(
                     color: Colors.green,
                     height: props.height * value,

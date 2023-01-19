@@ -8,10 +8,12 @@ class Props {
   final double width;
   final PageController controller;
   Props(
-      {this.totalPage,
-      this.selectedColor,
-      this.unSelectedColor,
-      this.currentPage,
-      this.width,
-      this.controller});
+      {
+      required this.totalPage,
+        required this.selectedColor,
+        required this.unSelectedColor,
+        required this.currentPage,
+        required this.width,
+        required this.controller
+      });
 }

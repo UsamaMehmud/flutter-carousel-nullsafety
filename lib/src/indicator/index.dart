@@ -15,13 +15,13 @@ class Indicator extends StatelessWidget {
   final PageController controller;
 
   Indicator({
-    this.currentPage,
-    this.indicatorName,
-    this.selectedColor,
-    this.unSelectedColor,
-    this.width,
-    this.totalPage,
-    this.controller,
+   required this.currentPage,
+    required this.indicatorName,
+    required  this.selectedColor,
+    required  this.unSelectedColor,
+    required  this.width,
+    required this.totalPage,
+    required  this.controller,
   });
 
   @override
@@ -75,7 +75,7 @@ Widget getIndicator(
   return indicator;
 }
 
-IndicatorTypes _getIndicatorType(String indicatorName) {
+ _getIndicatorType(String indicatorName) {
   switch (indicatorName) {
     case "bar":
       {

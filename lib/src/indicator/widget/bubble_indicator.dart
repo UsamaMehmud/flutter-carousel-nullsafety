@@ -6,7 +6,7 @@ import 'package:flutter_multi_carousel/src/services/screen_ratio.dart';
 class BubbleIndicator extends AnimatedWidget {
   final Props props;
   BubbleIndicator({
-    this.props,
+    required this.props,
   }) : super(listenable: props.controller);
   transformValue(index) {
     if (props.controller.hasClients) {
@@ -27,7 +27,7 @@ class BubbleIndicator extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    double wf = ScreenRatio.widthRatio;
+    double? wf = ScreenRatio.widthRatio;
     return new Container(
       alignment: Alignment.topLeft,
       height: 40.0,
@@ -39,7 +39,7 @@ class BubbleIndicator extends AnimatedWidget {
                 return Center(
                   child: Container(
                     width:
-                        ((props.width * wf) / props.totalPage).clamp(2.0, 40.0),
+                        ((props.width * wf!) / props.totalPage).clamp(2.0, 40.0),
                     child: Center(
                       child: Container(
                         height: (((props.width * wf) / (props.totalPage * 2))

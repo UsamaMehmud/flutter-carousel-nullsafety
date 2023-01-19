@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class ZcarouselState extends StatelessWidget {
-  int currentPage;
+  int? currentPage;
   bool initial = true;
   final dynamic props;
 
@@ -13,7 +13,7 @@ class ZcarouselState extends StatelessWidget {
   }
 
   initiate(index) {
-    double value;
+    double? value;
     if (index == currentPage && initial) value = 0.0;
     initial = false;
     return value;
@@ -80,7 +80,7 @@ class ZcarouselState extends StatelessWidget {
                 ..rotateY(((value) * 3393) / 90)
                 ..rotateZ(0.0),
               child: new Opacity(
-                opacity: math.pow(value, 2),
+                opacity: double.parse('${math.pow(value, 2)}'),
                 child: new Material(
                   borderRadius: new BorderRadius.circular(
                       (5 - ((1.0 - value) * 25)).clamp(0.1, 5.0)),

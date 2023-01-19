@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class RotatingCarouselState extends StatelessWidget {
-  int currentPage;
+  int? currentPage;
   bool initial = true;
   final dynamic props;
 
@@ -11,7 +11,7 @@ class RotatingCarouselState extends StatelessWidget {
   }
 
   initiate(index) {
-    double value;
+    double? value;
     if (index == currentPage && initial) value = 0.0;
     initial = false;
     return value;
@@ -63,7 +63,7 @@ class RotatingCarouselState extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               new Opacity(
-                opacity: pow(value, 4),
+                opacity: double.parse('${pow(value, 4)}'),
                 child: new Material(
                   borderRadius: new BorderRadius.circular(
                       (5 - ((1.0 - value) * 25)).clamp(0.1, 5.0)),

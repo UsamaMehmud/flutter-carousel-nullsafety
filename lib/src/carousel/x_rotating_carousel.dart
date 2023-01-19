@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class XcarouselState extends StatelessWidget {
-  int currentPage;
+  int? currentPage;
   bool initial = true;
   final dynamic props;
 
@@ -11,7 +11,7 @@ class XcarouselState extends StatelessWidget {
   }
 
   initiate(index) {
-    double value;
+    double? value;
     if (index == currentPage && initial) value = 0.0;
     initial = false;
     return value;
@@ -77,7 +77,7 @@ class XcarouselState extends StatelessWidget {
             ..rotateY(0.0)
             ..rotateZ(0.0),
           child: new Opacity(
-            opacity: math.pow(value, 4),
+            opacity: double.parse('${math.pow(value, 4)}'),
             child: new Material(
               elevation: (value > 0.9 ? 50.0 : 0.0),
               child: new Container(

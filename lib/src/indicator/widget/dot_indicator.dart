@@ -4,37 +4,33 @@ import 'package:flutter_multi_carousel/src/indicator/widget/props.dart';
 import 'package:flutter_multi_carousel/src/services/screen_ratio.dart';
 
 class DotIndicator extends AnimatedWidget {
-  Color selectedColor;
-  Color unselectedColor;
-  Animatable<Color> background;
+  Color? selectedColor;
+  Color? unselectedColor;
+  Animatable<Color>? background;
   final Props props;
-  final double wf = ScreenRatio.widthRatio;
+  final double? wf = ScreenRatio.widthRatio;
 
-  DotIndicator({this.props}) : super(listenable: props.controller) {
-    selectedColor = props.selectedColor ?? Colors.white;
-    unselectedColor = props.unSelectedColor ?? Colors.transparent;
+  DotIndicator({required this.props}) : super(listenable: props.controller) {
+    selectedColor = props.selectedColor == null ? props.selectedColor : Colors.white;
+    unselectedColor = props.unSelectedColor == null ? props.unSelectedColor : Colors.transparent;
     background = TweenSequence<Color>([
       TweenSequenceItem(
         weight: 1.0,
         tween: ColorTween(
           begin: unselectedColor,
           end: selectedColor,
-        ),
+        )as Animatable<Color>,
       ),
     ]);
   }
 
   transformValue(index) {
-    double value;
+    double? value;
     if (props.controller.hasClients) {
-      value = max(
-        0.0,
-        1.0 -
-            ((props.controller.page ?? props.controller.initialPage) - index)
-                .abs(),
+      value = max(0.0, 1.0 - ((props.controller.page ?? props.controller.initialPage) - index).abs(),
       );
     }
-    return value ?? 0.0;
+    return value != null ? value : 0.0;
   }
 
   @override
@@ -50,17 +46,15 @@ class DotIndicator extends AnimatedWidget {
                     child: Center(
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 100),
-                        height: (((props.width * wf) / (props.totalPage))
+                        height: (((props.width * wf!) / (props.totalPage))
                             .clamp(1.0, 8.0)),
-                        width: (((props.width * wf) / (props.totalPage))
+                        width: (((props.width * wf!) / (props.totalPage))
                             .clamp(1.0, 8.0)),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border: Border.all(color: selectedColor),
-                            color: transformValue(index) > 0.1
-                                ? background.evaluate(AlwaysStoppedAnimation(
-                                    transformValue(index)))
-                                : unselectedColor),
+                            border: Border.all(color: selectedColor as Color),
+                            color: transformValue(index) > 0.1 ? background!.evaluate(AlwaysStoppedAnimation(transformValue(index))) : unselectedColor,
+                        ),
                       ),
                     ),
                   )).toList()),

@@ -13,8 +13,8 @@ class Renderer extends StatefulWidget {
 }
 
 class RendererState extends State<Renderer> {
-  int data;
-  bool active;
+  int? data;
+  bool? active;
 
   @override
   initState() {
@@ -22,7 +22,7 @@ class RendererState extends State<Renderer> {
     active = false;
   }
 
-  updateRenderer(bool status, [String a]) {
+  updateRenderer(bool status, [String? a]) {
     setState(() {
       active = status;
     });
@@ -30,6 +30,6 @@ class RendererState extends State<Renderer> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder(updateRenderer, active);
+    return widget.builder(updateRenderer, active!);
   }
 }

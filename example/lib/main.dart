@@ -19,25 +19,33 @@ class CarouselExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Carousel(
-            height: 350.0,
-            width: 350,
-            initialPage: 3,
-            allowWrap: false,
-            type: Types.slideSwiper,
-            onCarouselTap: (i) {
-              print("onTap $i");
-            },
-            indicatorType: IndicatorTypes.bar,
-            arrowColor: Colors.black,
-            axis: Axis.horizontal,
-            showArrow: true,
-            children: List.generate(
-                7,
-                (i) => Center(
-                      child:
-                          Container(color: Colors.red.withOpacity((i + 1) / 7)),
-                    ))),
+        child: Container(
+          width: 350,
+          height: 350,
+          child: Carousel(
+              height: 350.0,
+              width: 350,
+              initialPage: 3,
+              allowWrap: false,
+              type: Types.slideSwiper,
+              onCarouselTap: (i) {
+                print("onTap $i");
+              },
+              indicatorType: IndicatorTypes.bar,
+              arrowColor: Colors.black,
+              axis: Axis.horizontal,
+              showArrow: false,
+              children: List.generate(7, (i) => Center(child: Container(color: Colors.red),),),
+              onPageChange:(value){
+                print('------------------------------${value}');
+              },
+              showIndicator :false,
+              indicatorBackgroundOpacity: 0.5,
+              unActiveIndicatorColor:Colors.red,
+              indicatorBackgroundColor:Colors.red,
+              activeIndicatorColor:Colors.transparent,
+          ),
+        ),
       ),
     );
   }

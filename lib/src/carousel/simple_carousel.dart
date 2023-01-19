@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class SimpleCarousel extends StatelessWidget {
-  Widget carouserBuilder;
-  int currentPage;
+  Widget? carouserBuilder;
+  int? currentPage;
   bool initial = true;
   final dynamic props;
 
   SimpleCarousel(this.props);
 
   initiate(index) {
-    double value;
+    double? value;
     if (index == currentPage && initial) value = 0.0;
     initial = false;
     return value;
@@ -60,14 +60,14 @@ class SimpleCarousel extends StatelessWidget {
                 // controller1?.page - index
                 // 3
                 0
-            : controller1.page - index;
+            : controller1.page! - index;
         value = (1 - (value.abs())).clamp(0.0, 1.0);
 
         return new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Opacity(
-              opacity: math.pow(value, 1.2),
+              opacity: double.parse('${math.pow(value, 1.2)}'),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
